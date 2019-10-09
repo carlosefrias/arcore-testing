@@ -26,6 +26,8 @@ public class SceneController : MonoBehaviour
         
         // Add to the end of Update()
         ProcessTouches();
+        
+        scoreboard.SetScore(snakeController.GetLength());
     }
     
     void QuitOnConnectionErrors()
@@ -67,6 +69,7 @@ public class SceneController : MonoBehaviour
         Debug.Log ("Selected plane centered at " + selectedPlane.CenterPose.position);
         scoreboard.SetSelectedPlane(selectedPlane);
         snakeController.SetPlane(selectedPlane);
+        GetComponent<FoodController>().SetSelectedPlane(selectedPlane);
     }
     
 }

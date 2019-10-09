@@ -82,9 +82,16 @@ public class SnakeController : MonoBehaviour
         // Not anchored, it is rigidbody that is influenced by the physics engine.
         snakeInstance = Instantiate (snakeHeadPrefab, pos,
             Quaternion.identity, transform);
-
+        // After instantiating a new snake instance, add the FoodConsumer component.
+        snakeInstance.AddComponent<FoodConsumer>();
+        
         // Pass the head to the slithering component to make movement work.
         GetComponent<Slithering> ().Head = snakeInstance.transform;
+    }
+    
+    public int GetLength()
+    {
+        return GetComponent<Slithering>().GetLength();
     }
     
 }
